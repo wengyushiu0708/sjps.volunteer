@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>協進國小志工團隊官方介紹網頁｜攜手協進，讓愛同行｜</title>
+    <style>
+        /* 全域樣式優化 */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth; /* 點擊超連結時平滑滾動 */
+        }
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F9F9F9;
+            color: #333333;
+            line-height: 1.8;
+        }
+
+        /* 頂端動態跑馬燈 */
+        .marquee-banner {
+            background-color: #5dc6a6; /* 亮綠藍色背景 */
+            color: #FFFFFF;
+            padding: 8px 0;
+            font-weight: bold;
+            font-size: 14px;
+            overflow: hidden;
+            white-space: nowrap;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .marquee-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 25s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        /* 導覽列 */
+        header {
+            background-color: #FFFFFF;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-area a {
+            font-size: 22px;
+            font-weight: 800;
+            color: #2D9CDB; /* 溫暖水藍色 */
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        .nav-links a {
+            color: #555555;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 15px;
+        }
+        .nav-links a:hover {
+            color: #27AE60; /* 翠綠色 */
+        }
+
+        /* 首頁主視覺 */
+        .hero-section {
+            position: relative;
+            height: 520px;
+            overflow: hidden;
+            background-color: #000;
+        }
+        .slider-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+            z-index: 1;
+        }
+        .slide.active {
+            opacity: 0.65;
+            z-index: 2;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.2));
+            z-index: 3;
+        }
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #FFFFFF;
+            z-index: 4;
+            width: 90%;
+            max-width: 800px;
+        }
+        .hero-content h1 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+            letter-spacing: 2px;
+        }
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 35px;
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
+            font-weight: 300;
+        }
+        .hero-btn {
+            background-color: #27AE60;
+            color: #FFFFFF;
+            padding: 13px 35px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
+            display: inline-block;
+        }
+        .hero-btn:hover {
+            background-color: #F2C94C;
+            color: #333333;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(242, 201, 76, 0.5);
+        }
+
+        /* 關於我們區塊 */
+        .about-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+            scroll-margin-top: 100px;
+        }
+        .about-flex-container {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        .about-col-left {
+            flex: 1;
+        }
+        .about-col-right {
+            flex: 1.1;
+        }
+        
+        .section-title-wrapper {
+            margin-bottom: 25px;
+        }
+        .section-tag {
+            background-color: #E8F5E9;
+            color: #27AE60;
+            padding: 4px 12px;
+            font-size: 13px;
+            font-weight: bold;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2D9CDB;
+            margin: 0;
+            position: relative;
+            padding-bottom: 12px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #27AE60;
+        }
+        .about-text {
+            color: #555555;
+            font-size: 15px;
+            text-align: justify;
+            margin-bottom: 25px;
+        }
+        
+        /* 核心期盼彩色標籤組 */
+        .capsule-group {
+            margin-top: 20px;
+        }
+        .capsule {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            color: #FFFFFF;
+        }
+        .capsule-1 { background-color: #2D9CDB; }
+        .capsule-2 { background-color: #27AE60; }
+        .capsule-3 { background-color: #F2994A; }
+
+        /* 行事曆表格樣式 */
+        .calendar-card {
+            background: #FFFFFF;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+            border-top: 4px solid #27AE60;
+        }
+        .calendar-card h3 {
+            margin: 0 0 18px 0;
+            font-size: 18px;
+            color: #333;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .calendar-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            min-width: 450px;
+        }
+        .calendar-table th {
+            background-color: #F2F2F2;
+            color: #444444;
+            font-weight: 600;
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 2px solid #E0E0E0;
+        }
+        .calendar-table td {
+            padding: 12px 12px;
+            border-bottom: 1px solid #EEEEEE;
+            color: #555555;
+            vertical-align: top;
+        }
+        .calendar-table tr:last-child td {
+            border-bottom: none;
+        }
+        .calendar-table small {
+            display: block;
+            color: #777777;
+            font-size: 12px;
+            margin-top: 4px;
+            line-height: 1.5;
+        }
+        .status-badge {
+            color: #FFFFFF;
+            padding: 2px 8px;
+            font-size: 11px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: inline-block;
+            white-space: nowrap;
+        }
+        .bg-orange { background-color: #F2994A; }
+        .bg-blue { background-color: #2D9CDB; }
+        .bg-green { background-color: #27AE60; }
+        .bg-red { background-color: #EB5757; }
+
+        /* 志工十一組工作說明區塊 */
+        .groups-section {
+            background-color: #FFFFFF;
+            padding: 70px 20px;
+            scroll-margin-top: 80px;
+        }
+        .groups-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .center-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .center-title h2 {
+            font-size: 30px;
+            color: #333333;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+        .center-title p {
+            color: #777777;
+            font-size: 15px;
+            margin: 0;
+        }
+        
+        /* 現代 CSS Grid 網格系統 */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        /* 卡片樣式 */
+        .group-card {
+            background-color: #F9F9F9;
+            border-radius: 12px;
+            padding: 25px;
+            border-left: 5px solid #2D9CDB;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .group-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+            background-color: #FFFFFF;
+        }
+        .group-card h3 {
+            margin: 0 0 12px 0;
+            font-size: 18px;
+            color: #333333;
+            font-weight: 700;
+        }
+        .group-card p {
+            margin: 0;
+            font-size: 14px;
+            color: #666666;
+            text-align: justify;
+            line-height: 1.7;
+        }
+        
+        .card-green { border-left-color: #27AE60; }
+        .card-orange { border-left-color: #F2994A; }
+        
+        /* 亮點致謝特殊卡片樣式 */
+        .card-highlight {
+            border: 2px dashed #F2994A !important;
+            border-left: 5px dashed #F2994A !important;
+            background-color: #FFF9F3 !important;
+        }
+        .card-highlight h3 {
+            color: #E27D1D !important;
+        }
+        .thanks-tag {
+            background-color: #F2994A;
+            color: #FFFFFF;
+            padding: 1px 6px;
+            font-size: 11px;
+            border-radius: 3px;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        /* 📝 線上報名與權益交流區塊 (全新合併優化) */
+        .join-section {
+            background-color: #F2F9FF; /* 淡藍色調溫馨背景 */
+            padding: 60px 20px;
+            scroll-margin-top: 80px;
+        }
+        .join-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 左右對稱雙大欄位 */
+            gap: 35px;
+        }
+        .join-big-card {
+            background: #FFFFFF;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+            border-top: 5px solid #2D9CDB; /* 主調水藍 */
+        }
+        .join-big-card.card-right {
+            border-top-color: #27AE60; /* 右欄社群採用翠綠調 */
+        }
+        
+        /* 子區塊內間距與底線 */
+        .sub-block {
+            margin-bottom: 30px;
+        }
+        .sub-block:last-child {
+            margin-bottom: 0;
+        }
+        .join-big-card h3 {
+            margin-top: 0;
+            font-size: 22px;
+            color: #333333;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #F2F2F2;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+        }
+        .join-big-card p {
+            font-size: 15px;
+            color: #555555;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        .join-link-btn {
+            display: inline-block;
+            background-color: #2D9CDB;
+            color: #FFFFFF;
+            padding: 11px 28px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(45, 156, 219, 0.2);
+        }
+        .join-link-btn:hover {
+            background-color: #1B74A8;
+            transform: translateY(-1px);
+        }
+        .btn-green {
+            background-color: #27AE60;
+            box-shadow: 0 4px 10px rgba(39, 174, 96, 0.2);
+        }
+        .btn-green:hover {
+            background-color: #1E8449;
+        }
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 15px;
+            color: #555555;
+        }
+        .info-list li {
+            margin-bottom: 12px;
+            padding-left: 22px;
+            position: relative;
+        }
+        .info-list li::before {
+            content: "•";
+            color: #F2994A; /* 亮眼橘色點綴 */
+            font-weight: bold;
+            font-size: 20px;
+            position: absolute;
+            left: 2px;
+            top: -2px;
+        }
+
+        /* 頁尾 */
+        footer {
+            background-color: #333333;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 35px 20px;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+        footer p {
+            margin: 6px 0;
+            color: #B2B2B2;
+        }
+        footer a {
+            color: #2D9CDB;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #5dc6a6;
+            text-decoration: underline;
+        }
+
+        /* ==========================================================================
+           響應式斷點設定 (Media Queries)
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .about-flex-container, .join-container {
+                flex-direction: column;
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .about-col-left, .about-col-right {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px 20px;
+            }
+            .nav-links a {
+                margin: 0 10px;
+                font-size: 14px;
+            }
+            .hero-section {
+                height: 420px;
+            }
+            .hero-content h1 {
+                font-size: 28px;
+            }
+            .hero-content p {
+                font-size: 15px;
+            }
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            .about-section, .groups-section, .join-section {
+                margin: 40px auto;
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="marquee-banner">
+        <div class="marquee-content">
+            🌟 歡迎加入協進志工團隊！我們正在熱烈招募新夥伴中，誠摯邀請具備熱忱的您一同守護校園、陪伴孩子快樂成長！心動不如行動，點擊主視覺按鈕即可線上報名！ 🌟
+        </div>
+    </div>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo-area">
+                <a href="#">協進國小志工團隊</a>
+            </div>
+            <nav class="nav-links">
+                <a href="#">首頁精選</a>
+                <a href="#about">關於我們</a>
+                <a href="#volunteer-groups">志工十一組</a>
+                <a href="#join-us">線上報名</a>
+                <a href="#">最新消息</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="slider-container">
+            <img src="volunteer1.jpg" alt="協進志工活動照片1" class="slide active">
+            <img src="volunteer2.jpg" alt="協進志工活動照片2" class="slide">
+            <img src="volunteer3.jpg" alt="協進志工活動照片3" class="slide">
+            <img src="volunteer4.jpg" alt="協進志工活動照片4" class="slide">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>攜手協進，讓愛同行</h1>
+            <p>用熱血與陪伴，點亮校園的每一個角落，成為孩子們最堅實的後盾</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfyA6rw20rnhu20E6SagycfSw0r0I7rHvLh__bJJpOetfDdCg/viewform?pli=1" target="_blank" class="hero-btn">加入我們這個大家庭</a>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="about-flex-container">
+            
+            <div class="about-col-left">
+                <div class="section-title-wrapper">
+                    <span class="section-tag">ABOUT US</span>
+                    <h2 class="section-title">關於我們｜志工精神</h2>
+                </div>
+                <p class="about-text">
+                    協進國小志工團隊成立多年來，始終秉持著溫暖與奉獻的精神，陪伴著一屆又一屆的協進學子平安快樂地成長。我們深信，每位志工跨出的一小步，都是守護孩子、改變校園環境的一大步。
+                </p>
+                <p class="about-text">
+                    在這個充滿愛的大家庭裡，每位夥伴都能依據自身的專長與興趣找到發揮的舞台。不論是維護安全的交通導護、講述動人故事的晨間故事組，還是支援圖書與各項活動的夥伴，我們皆手心向下、相互扶持，用最真誠的笑容與無私的熱血，共同構築一個充滿愛與希望的協進校園生活。
+                </p>
+                
+                <div class="capsule-group">
+                    <span class="capsule capsule-1">✨ 凝聚親校合作</span>
+                    <span class="capsule capsule-2">🌱 守護孩子成長</span>
+                    <span class="capsule capsule-3">🤝 營造幸福生活</span>
+                </div>
+            </div>
+            
+            <div class="about-col-right">
+                <div class="calendar-card">
+                    <h3>📅 115學年度重要校園行事曆與志工服務提醒</h3>
+                    <div class="table-responsive">
+                        <table class="calendar-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 25%;">日期時間</th>
+                                    <th style="width: 55%;">活動項目與注意事項備註</th>
+                                    <th style="width: 20%;">志工提醒</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>06 / 30</strong> (二)</td>
+                                    <td>
+                                        <strong>全校結業式</strong>
+                                        <small>⏱️ 12:00 放學<br>🍱 當日不供餐，將發放餐盒。</small>
+                                    </td>
+                                    <td><span class="status-badge bg-orange">學期圓滿</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>08 / 06</strong> (四)</td>
+                                    <td>
+                                        <strong>全校返校日</strong>
+                                        <small>⏱️ 10:10 放學</small>
+                                    </td>
+                                    <td><span class="status-badge bg-red">🚨 交通值勤</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>08 / 22</strong> (六)</td>
+                                    <td>
+                                        <strong>小一新生訓練</strong>
+                                        <small>📢 歡迎今年家有新生的家長踴躍參加！<br>👕 協助志工請穿著「藍色運動會紀念T」於 08:00 前到場，後續將私訊提醒細節。</small>
+                                    </td>
+                                    <td><span class="status-badge bg-blue">🙋 4員協助</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>08 / 28</strong> (五)</td>
+                                    <td>
+                                        <strong>全校返校日</strong>
+                                        <small>⏱️ 10:10 放學</small>
+                                    </td>
+                                    <td><span class="status-badge bg-red">🚨 交通值勤</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>08 / 31</strong> (一)</td>
+                                    <td>
+                                        <strong>115學年度正式開學</strong>
+                                        <small>⏰ 恢復各學年正常上放學時間。<br>🚗 交通志工即日起全面啟動值勤，守護孩子安全！</small>
+                                    </td>
+                                    <td><span class="status-badge bg-red">🚨 交通值勤</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>09 / 01</strong> (二)<br>至 <strong>09 / 07</strong> (一)</td>
+                                    <td>
+                                        <strong>開學第一週健檢</strong>
+                                        <small>📏 預計進行全校學生身高、體重與視力測量檢查。</small>
+                                    </td>
+                                    <td><span class="status-badge bg-green">🩺 健檢排班</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i>預計</i><br><strong>09 / 17</strong> (四)</td>
+                                    <td>
+                                        <strong>115新學年志工期初聚會</strong>
+                                        <small>💬 待與校長及主任確認最終日期後，將於開學後正式公告。誠摯邀請全體夥伴登記參加！</small>
+                                    </td>
+                                    <td><span class="status-badge bg-blue">🤝 歡迎登記</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <section id="volunteer-groups" class="groups-section">
+        <div class="groups-container">
+            <div class="center-title">
+                <h2>志工十一組工作說明</h2>
+                <p>多元的分組規劃，讓每位志工都能發揮所長，找到最適合自己的發光舞台</p>
+            </div>
+            
+            <div class="grid-container">
+                <div class="group-card">
+                    <h3>01. 交通導護組</h3>
+                    <p>主要負責維護學生上下學的交通秩序與過馬路的安全。他們風雨無阻，在校園周邊重要路口站崗，是孩子們踏入校園的第一道平安守護線，深受家長與師生的感激。</p>
+                </div>
+                <div class="group-card card-green">
+                    <h3>02. 晨間的故事組</h3>
+                    <p>利用早自習時間，走進低中年級的各班教室，透過生動有趣、富有教育意義的繪本故事與互動問答，啟發孩子們的閱讀興趣與想像力，為孩子開啟充满正能量的一天。</p>
+                </div>
+                <div class="group-card card-orange">
+                    <h3>03. 圖書圖書組</h3>
+                    <p>長期協助學校圖書館進行新書上架、書籍編目分類、破損圖書修補，以及學生借還書的流通服務。同時協助規劃精采的主題書展與閱讀推廣，是打造校園書香風氣的幕後功臣。</p>
+                </div>
+                <div class="group-card card-orange">
+                    <h3>04. 綠美環保組</h3>
+                    <p>專注於校園環境的綠化美化與資源回收指導。透過協助修剪花木、維護生態園區，並帶領引導孩子們建立正確的垃圾分類觀念，共同營造綠意盎然、整潔舒適的學習環境。</p>
+                </div>
+                <div class="group-card">
+                    <h3>05. 保健衛生組</h3>
+                    <p>進駐健康中心協助護理老師。在下課尖峰時間幫忙安撫、照顧受傷的孩子，協助進行簡單的傷口冰敷處理與秩序維護，並配合學校辦理身高體重視力檢查等各項健康篩檢工作。</p>
+                </div>
+                <div class="group-card card-green">
+                    <h3>06. 幼兒幼兒組</h3>
+                    <p>特別支援幼兒園的各項日常活動與常規訓練。不論是校外教學的隨隊安全維護、節慶大型活動的道具製作與會場佈置，還是點心時間的溫暖協助，都能看見他們充滿母愛的身影。</p>
+                </div>
+                <div class="group-card card-green">
+                    <h3>07. 學生活動組</h3>
+                    <p>全方位支援學校辦理的大型節慶與主題活動。如兒童節慶祝遊園會、萬聖節變裝走秀、畢業典禮等，協助現場動線引導、闖關遊戲關主、活動攝影紀錄，為師生留下美好回憶。</p>
+                </div>
+                <div class="group-card card-orange">
+                    <h3>08. 輔導輔導組</h3>
+                    <p>在輔導室的指導下，進行特定學童的認輔與關懷。透過課後溫暖的個別談心、手作陪伴、遊戲引導等方式，給予需要家庭溫暖或學習適應協助的孩子更多傾聽、鼓勵與正向能量。</p>
+                </div>
+                <div class="group-card">
+                    <h3>09. 課後照顧組</h3>
+                    <p>協助課後留校學童的照顧與陪伴。提供安心的自習空間維護，並在孩子遇到作業難題時給予適切的輔導解惑，讓雙薪家庭的父母能放心工作，免除孩子課後安置的擔憂。</p>
+                </div>
+                <div class="group-card">
+                    <h3>10. 資訊行政組</h3>
+                    <p>負責志工團隊對內對外的資訊流通。包含維護與更新志工聯絡網、編排精美的活動簡報、會議記錄統整，以及協助拍攝各組服務照片建立影像紀錄檔案，是團隊資訊化發展的支柱。</p>
+                </div>
+                <div class="group-card card-highlight">
+                    <h3>11. 運動會會前賽協助組<span class="thanks-tag">特別感謝</span></h3>
+                    <p>專門在校運會前夕挺身而出的強力後援部隊！負責協助各項田徑、球類會前賽的事務工作，包含賽事裁判計時協助、選手動線檢錄引導、計分板即時登錄與現場秩序維護，是保障賽事順暢進行的關鍵亮點夥伴。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="join-us" class="join-section">
+        <div class="join-container">
+            
+            <div class="join-big-card">
+                <div class="sub-block">
+                    <h3>📝 志工線上報名系統</h3>
+                    <p>誠摯歡迎更多有愛心、有活力的家長加入我們協進國小志工團大家庭的行列喔！請點擊下方連結前往線上表單報名：</p>
+                    <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfyA6rw20rnhu20E6SagycfSw0r0I7rHvLh__bJJpOetfDdCg/viewform?pli=1" target="_blank" class="join-link-btn">點此填寫官方報名表 ↗</a></p>
+                </div>
+                
+                <div class="sub-block" style="margin-top: 35px; padding-top: 20px; border-top: 1px dashed #E0E0E0;">
+                    <h3>💡 志工權益與福利</h3>
+                    <p>我們非常重視每位夥伴的無私付出，加入我們將享有以下完善保障與豐富活動：</p>
+                    <ul class="info-list">
+                        <li>提供完善的志工團隊意外保險</li>
+                        <li>協助進行官方志工服務時數登錄（核發服務證明）</li>
+                        <li>定期辦理各項專業志工增能研習課程</li>
+                        <li>每學期期末辦理感恩聯誼聚餐活動</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="join-big-card card-right">
+                <div class="sub-block">
+                    <h3>🌐 官方交流社群</h3>
+                    <p>歡迎加入我們的公開交流社團，以便獲取最即時的校園活動通知、服務排班更動與精彩日常分享：</p>
+                    <p><a href="https://www.facebook.com/groups/1021982973557753" target="_blank" class="join-link-btn btn-green">🔗 加入 協進志工團隊 Facebook 公開社團 ↗</a></p>
+                </div>
+
+                <div class="sub-block" style="margin-top: 35px; padding-top: 20px; border-top: 1px dashed #E0E0E0;">
+                    <h3>📞 聯絡與承辦資訊</h3>
+                    <p>若您對志工服務有任何疑問，歡迎隨時與校內承辦單位聯繫：</p>
+                    <ul class="info-list">
+                        <li><strong>承辦單位：</strong>協進國小輔導室 / 志工團</li>
+                        <li><strong>聯絡電話：</strong>(06) 259-2593 (請轉志工業務承辦人)</li>
+                        <li><strong>學校地址：</strong>700 臺南市中西區金華路四段17號</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 <a href="https://www.sjps.tn.edu.tw/" target="_blank">臺南市中西區協進國民小學</a> 志工團隊 版權所有</p>
+        <p>
+            校址：700臺南市中西區金華路四段17號 ｜ 聯絡電話：(06) 222-3014 ｜ 
+            交流平台：<a href="https://www.facebook.com/groups/1021982973557753" target="_blank">協進志工FB社團</a>
+        </p>
+    </footer>
+
+    <script>
+        (function() {
+            var slides = document.querySelectorAll('.slider-container .slide');
+            var currentIndex = 0;
+            var slideInterval = 4000;
+
+            function nextSlide() {
+                slides[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % slides.length;
+                slides[currentIndex].classList.add('active');
+            }
+
+            setInterval(nextSlide, slideInterval);
+        })();
+    </script>
+</body>
+</html>
