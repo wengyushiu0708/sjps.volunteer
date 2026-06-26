@@ -9,53 +9,20 @@
     <link rel="manifest" href="manifest.json">
 
     <style>
-        /* --- 影片教學區塊專屬樣式 --- */
-        .video-section {
-            max-width: 600px;
-            margin: 60px auto 20px auto;
-            padding: 0 20px;
-            scroll-margin-top: 100px; /* 點擊導覽列跳轉時，上方會留 100px 預留空隙，不會被選單擋住標題 */
-        }
-        
-        .video-inner-container {
-            background: #FFFFFF;
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
-            border-top: 5px solid #ff9800; /* 給它一條跟協進橘一樣的漂亮頂條 */
-        }
+    .video-responsive-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 這是維持 16:9 比例的關鍵 */
+    height: 0;
+    overflow: hidden;
+}
 
-        .video-responsive-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 850px;
-            margin: 0 auto;
-            height: 0;
-            padding-bottom: 47.8%; /* 讓網頁在大螢幕下維持完美的比例縮放 */
-            background-color: #000000;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        
-        @media (max-width: 850px) {
-            .video-responsive-wrapper {
-                padding-bottom: 56.25%; /* 手機版自動切換為標準 16:9 */
-            }
-            .video-inner-container {
-                padding: 20px;
-            }
-        }
-
-        .video-responsive-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            
-        }
+.video-responsive-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
         
         /* 導覽列 App 按鈕 hover 變色效果 */
         .nav-links a[href="#video-section"]:hover {
@@ -679,7 +646,7 @@
             <nav class="nav-links">
                 <a href="#">首頁精選</a>
                 <a href="#about">關於我們</a>
-                <a href="#volunteer-groups">志工九組</a>
+                <a href="#volunteer-groups">組別介紹</a>
                 <a href="#join-us">線上報名</a>
                 <a href="#">最新消息</a>
                 <a href="#video-section" style="color: #585652; font-weight: bold;">下載App影片教學</a>
@@ -957,24 +924,17 @@
         </div>
     </section>
     
+<!-- 🎬 影片教學區塊 -->
     <section id="video-section" class="video-section">
         <div class="video-inner-container">
-            <div class="section-title-wrapper" style="text-align: center; margin-bottom: 20px;">
-                <span class="section-tag" style="background-color: #FFF3E0; color: #E65100;">APP TUTORIAL</span>
-                <h2 class="section-title" style="display: inline-block; padding-bottom: 8px;">🎥 手機下載 App 操作與影片教學</h2>
-            </div>
-            <p style="text-align: center; color: #666; margin-bottom: 25px; font-size: 15px;">
-                觀看由我們製作的教學影片，讓操作更上手！跟著步驟將網頁快速加入手機桌面吧！
-            </p>
-            <div class="video-responsive-wrapper">
-                <iframe 
-                    src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
-                    title="手機下載App操作與影片教學" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen>
-                </iframe>
-            </div>
+            <iframe 
+                src="https://www.youtube.com/embed/dIZnzC1btq4" 
+                width="100%" 
+                height="400" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
         </div>
     </section>
 
