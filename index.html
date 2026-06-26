@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>協進國小志工團隊官方介紹網頁｜攜手協進，讓愛同行｜</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="manifest" href="manifest.json">
     <style>
         /* 全域樣式優化 */
         *, *::before, *::after {
@@ -21,6 +19,51 @@
             background-color: #F9F9F9;
             color: #333333;
             line-height: 1.8;
+        }
+        /* --- 雙 QR Code 並排區塊樣式 --- */
+        .sjps-double-qrcode-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap; /* 讓手機版會自動換行 */
+            background-color: #ffffff;
+            padding: 20px;
+            margin: 15px 0;
+            border: 2px dashed #ff9800; /* 協進橘虛線外框 */
+            border-radius: 12px;
+        }
+
+        .sjps-qrcode-item {
+            flex: 1;
+            min-width: 200px; /* 限制最小寬度，防止手機版擠壓 */
+            text-align: center;
+            padding: 10px;
+        }
+
+        .sjps-qrcode-item img {
+            width: 140px; /* QR Code 大小 */
+            height: 140px;
+            border: 3px solid #f5f5f5;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 8px;
+        }
+
+        .sjps-qrcode-label {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .btn-link {
+            display: inline-block;
+            margin-top: 5px;
+            color: #ff9800;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .btn-link:hover {
+            text-decoration: underline;
         }
 
         /* 頂端動態跑馬燈 */
@@ -737,7 +780,7 @@
         </div>
     </section>
 
-    <section id="join-us" class="join-section">
+<section id="join-us" class="join-section">
         <div class="join-container">
             
             <div class="join-big-card">
@@ -745,6 +788,11 @@
                     <h3>📝 志工線上報名系統</h3>
                     <p>誠摯歡迎更多有愛心、有活力的家長加入我們協進國小志工團大家庭的行列喔！請點擊下方連結前往線上表單報名：</p>
                     <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfyA6rw20rnhu20E6SagycfSw0r0I7rHvLh__bJJpOetfDdCg/viewform?pli=1" target="_blank" class="join-link-btn">點此填寫官方報名表 ↗</a></p>
+                    
+                    <div style="text-align: center; margin-top: 15px; padding: 10px; border: 1px dashed #ff9800; border-radius: 8px; background-color: #fffaf0;">
+                        <img src="https://chart.googleapis.com/chart?chs=140x140&cht=qr&chl=https://docs.google.com/forms/d/e/1FAIpQLSfyA6rw20rnhu20E6SagycfSw0r0I7rHvLh__bJJpOetfDdCg/viewform?pli=1&chco=FF9800" alt="報名表單 QR Code" style="width:140px; height:140px; border:3px solid #fff; border-radius:6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <div style="font-size: 13px; font-weight: bold; color: #ff9800; margin-top: 5px;">📱 手機掃描立即報名</div>
+                    </div>
                 </div>
                 
                 <div class="sub-block" style="margin-top: 35px; padding-top: 20px; border-top: 1px dashed #E0E0E0;">
@@ -764,6 +812,11 @@
                     <h3>🌐 官方交流社群</h3>
                     <p>歡迎加入我們的公開交流社團，以便獲取最即時的校園活動通知、服務排班更動與精彩日常分享：</p>
                     <p><a href="https://www.facebook.com/groups/1021982973557753" target="_blank" class="join-link-btn btn-green">🔗 加入 協進志工團隊 Facebook 公開社團 ↗</a></p>
+                    
+                    <div style="text-align: center; margin-top: 15px; padding: 10px; border: 1px dashed #1877F2; border-radius: 8px; background-color: #f0f7ff;">
+                        <img src="https://chart.googleapis.com/chart?chs=140x140&cht=qr&chl=https://www.facebook.com/groups/1021982973557753&chco=1877F2" alt="FB社群 QR Code" style="width:140px; height:140px; border:3px solid #fff; border-radius:6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <div style="font-size: 13px; font-weight: bold; color: #1877F2; margin-top: 5px;">📱 手機掃描加入社團</div>
+                    </div>
                 </div>
 
                 <div class="sub-block" style="margin-top: 35px; padding-top: 20px; border-top: 1px dashed #E0E0E0;">
