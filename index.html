@@ -9,6 +9,61 @@
     <link rel="manifest" href="manifest.json">
 
     <style>
+        /* --- 影片教學區塊專屬樣式 --- */
+        .video-section {
+            max-width: 600px;
+            margin: 60px auto 20px auto;
+            padding: 0 20px;
+            scroll-margin-top: 100px; /* 點擊導覽列跳轉時，上方會留 100px 預留空隙，不會被選單擋住標題 */
+        }
+        
+        .video-inner-container {
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+            border-top: 5px solid #ff9800; /* 給它一條跟協進橘一樣的漂亮頂條 */
+        }
+
+        .video-responsive-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 850px;
+            margin: 0 auto;
+            height: 0;
+            padding-bottom: 47.8%; /* 讓網頁在大螢幕下維持完美的比例縮放 */
+            background-color: #000000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 850px) {
+            .video-responsive-wrapper {
+                padding-bottom: 56.25%; /* 手機版自動切換為標準 16:9 */
+            }
+            .video-inner-container {
+                padding: 20px;
+            }
+        }
+
+        .video-responsive-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            
+        }
+        /* 💡 就是加在這裡！直接貼在 style 結束標籤的前面： */
+        
+        /* 導覽列 App 按鈕 hover 變色效果 */
+        .nav-links a[href="#video-section"]:hover {
+            color: #27AE60 !important; /* 當滑鼠移過去時，強制變成亮橘色 */
+            text-decoration: underline; 
+            /* 如果您想要文字底下有底線，也可以取消下面這行的註解： */
+        }
         /* 全域樣式優化 */
         *, *::before, *::after {
             box-sizing: border-box;
@@ -628,6 +683,7 @@
                 <a href="#volunteer-groups">志工九組</a>
                 <a href="#join-us">線上報名</a>
                 <a href="#">最新消息</a>
+                <a href="#video-section" style="color: #585652; font-weight: bold;">下載App影片教學</a>
             </nav>
         </div>
     </header>
@@ -644,6 +700,28 @@
             <h1>攜手協進，讓愛同行</h1>
             <p>用熱血與陪伴，點亮校園的每一個角落，成為孩子們最堅實的後盾</p>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSfyA6rw20rnhu20E6SagycfSw0r0I7rHvLh__bJJpOetfDdCg/viewform?pli=1" target="_blank" class="hero-btn">加入我們這個大家庭</a>
+        </div>
+    </section>
+    <!-- 🎬 就是加在這裡！首頁主視覺後面、關於我們前面 -->
+    <section id="video-section" class="video-section">
+        <div class="video-inner-container">
+            <div class="section-title-wrapper" style="text-align: center; margin-bottom: 20px;">
+                <span class="section-tag" style="background-color: #FFF3E0; color: #E65100;">APP TUTORIAL</span>
+                <h2 class="section-title" style="display: inline-block; padding-bottom: 8px;">🎥 手機下載 App 操作與影片教學</h2>
+            </div>
+            <p style="text-align: center; color: #666; margin-bottom: 25px; font-size: 15px;">
+                觀看由我們製作的教學影片，讓操作更上手！跟著步驟將網頁快速加入手機桌面吧！
+            </p>
+            <div class="video-responsive-wrapper">
+                <!-- 💡 請將下面的 YOUR_VIDEO_ID 替換成您真正的 YouTube 影片代碼 -->
+                <iframe 
+                    src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
+                    title="手機下載App操作與影片教學" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
         </div>
     </section>
 
@@ -904,7 +982,7 @@
 
 <footer class="footer">
     <div class="footer-container">
-        <p>© 2026 <a href="https://www.hjps.tn.edu.tw/" target="_blank" class="footer-link-school">臺南市中西區協進國小</a> 志工團隊 版權所有</p>
+        <p>© 2026 <a href="https://www.hjps.tn.edu.tw/" target="_blank" class="footer-link-school">臺南市中西區協進國小</a> 志工團隊 版權所有.</p>
         <p>
             📍 校址：<a href="https://maps.google.com/?q=臺南市中西區金華路四段17號" target="_blank" class="footer-link">700臺南市中西區金華路四段17號</a>
             <span class="footer-divider">｜</span>
