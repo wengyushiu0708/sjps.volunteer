@@ -9,20 +9,53 @@
     <link rel="manifest" href="manifest.json">
 
     <style>
-    .video-responsive-wrapper {
-    position: relative;
-    padding-bottom: 56.25%; /* 這是維持 16:9 比例的關鍵 */
-    height: 0;
-    overflow: hidden;
-}
+        /* --- 影片教學區塊專屬樣式 --- */
+        .video-section {
+            max-width: 600px;
+            margin: 60px auto 20px auto;
+            padding: 0 20px;
+            scroll-margin-top: 100px; /* 點擊導覽列跳轉時，上方會留 100px 預留空隙，不會被選單擋住標題 */
+        }
+        
+        .video-inner-container {
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+            border-top: 5px solid #ff9800; /* 給它一條跟協進橘一樣的漂亮頂條 */
+        }
 
-.video-responsive-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
+        .video-responsive-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 850px;
+            margin: 0 auto;
+            height: 0;
+            padding-bottom: 47.8%; /* 讓網頁在大螢幕下維持完美的比例縮放 */
+            background-color: #000000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 850px) {
+            .video-responsive-wrapper {
+                padding-bottom: 56.25%; /* 手機版自動切換為標準 16:9 */
+            }
+            .video-inner-container {
+                padding: 20px;
+            }
+        }
+
+        .video-responsive-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            
+        }
         
         /* 導覽列 App 按鈕 hover 變色效果 */
         .nav-links a[href="#video-section"]:hover {
