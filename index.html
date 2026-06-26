@@ -56,14 +56,13 @@
             border: none;
             
         }
-        /* 💡 就是加在這裡！直接貼在 style 結束標籤的前面： */
         
         /* 導覽列 App 按鈕 hover 變色效果 */
         .nav-links a[href="#video-section"]:hover {
-            color: #27AE60 !important; /* 當滑鼠移過去時，強制變成亮橘色 */
+            color: #27AE60 !important; /* 當滑鼠移過去時，變成綠色 */
             text-decoration: underline; 
-            /* 如果您想要文字底下有底線，也可以取消下面這行的註解： */
         }
+        
         /* 全域樣式優化 */
         *, *::before, *::after {
             box-sizing: border-box;
@@ -702,28 +701,6 @@
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSfyA6rw20rnhu20E6SagycfSw0r0I7rHvLh__bJJpOetfDdCg/viewform?pli=1" target="_blank" class="hero-btn">加入我們這個大家庭</a>
         </div>
     </section>
-    <!-- 🎬 就是加在這裡！首頁主視覺後面、關於我們前面 -->
-    <section id="video-section" class="video-section">
-        <div class="video-inner-container">
-            <div class="section-title-wrapper" style="text-align: center; margin-bottom: 20px;">
-                <span class="section-tag" style="background-color: #FFF3E0; color: #E65100;">APP TUTORIAL</span>
-                <h2 class="section-title" style="display: inline-block; padding-bottom: 8px;">🎥 手機下載 App 操作與影片教學</h2>
-            </div>
-            <p style="text-align: center; color: #666; margin-bottom: 25px; font-size: 15px;">
-                觀看由我們製作的教學影片，讓操作更上手！跟著步驟將網頁快速加入手機桌面吧！
-            </p>
-            <div class="video-responsive-wrapper">
-                <!-- 💡 請將下面的 YOUR_VIDEO_ID 替換成您真正的 YouTube 影片代碼 -->
-                <iframe 
-                    src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
-                    title="手機下載App操作與影片教學" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-        </div>
-    </section>
 
     <section id="about" class="about-section">
         <div class="about-flex-container">
@@ -927,7 +904,7 @@
         </div>
     </section>
 
-<section id="join-us" class="join-section">
+    <section id="join-us" class="join-section">
         <div class="join-container">
             
             <div class="join-big-card">
@@ -979,8 +956,7 @@
 
         </div>
     </section>
-    </section>
-    <!-- 🎬 就是加在這裡！首頁主視覺後面、關於我們前面 -->
+    
     <section id="video-section" class="video-section">
         <div class="video-inner-container">
             <div class="section-title-wrapper" style="text-align: center; margin-bottom: 20px;">
@@ -991,7 +967,6 @@
                 觀看由我們製作的教學影片，讓操作更上手！跟著步驟將網頁快速加入手機桌面吧！
             </p>
             <div class="video-responsive-wrapper">
-                <!-- 💡 請將下面的 YOUR_VIDEO_ID 替換成您真正的 YouTube 影片代碼 -->
                 <iframe 
                     src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
                     title="手機下載App操作與影片教學" 
@@ -1005,7 +980,7 @@
 
 <footer class="footer">
     <div class="footer-container">
-        <p>© 2026 <a href="https://www.hjps.tn.edu.tw/" target="_blank" class="footer-link-school">臺南市中西區協進國小</a> 志工團隊 版權所有.</p>
+        <p>© 2026 <a href="https://www.hjps.tn.edu.tw/" target="_blank" class="footer-link-school">臺南市中西區協進國小</a> 志工團隊 版權所有</p>
         <p>
             📍 校址：<a href="https://maps.google.com/?q=臺南市中西區金華路四段17號" target="_blank" class="footer-link">700臺南市中西區金華路四段17號</a>
             <span class="footer-divider">｜</span>
@@ -1013,7 +988,6 @@
         </p>
     </div>
 </footer>
-
 
     <script>
         (function() {
