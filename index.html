@@ -9,22 +9,49 @@
     <link rel="manifest" href="manifest.json">
 
     <style>
+        /* --- 通知按鈕專屬樣式 --- */
+        .notification-box {
+            text-align: center;
+            margin: 20px auto;
+            padding: 15px;
+            background: #E8F8F5;
+            border: 2px dashed #27AE60;
+            border-radius: 12px;
+            max-width: 600px;
+        }
+        .notify-btn {
+            background-color: #27AE60;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(39, 174, 96, 0.2);
+        }
+        .notify-btn:hover {
+            background-color: #1E8449;
+            transform: translateY(-1px);
+        }
+
         /* --- 影片教學區塊專屬樣式 --- */
         .video-section {
             max-width: 600px;
             margin: 60px auto 20px auto;
             padding: 0 20px;
-            scroll-margin-top: 100px; /* 點擊導覽列跳轉時，上方會留 100px 預留空隙，不會被選單擋住標題 */
+            scroll-margin-top: 100px;
         }
         .tutorial-text {
-            text-align: left;           /* 文字內容靠左 */
+            text-align: left;
             color: #555;
-            margin: 0 auto 25px auto;   /* 上方與左右自動對齊，下方留 25px 間距 */
+            margin: 0 auto 25px auto;
             font-size: 16px;
             line-height: 1.6;
-            padding-left: 20px;         /* 文字左邊留空間給那條綠線 */
-            max-width: 350px;           /* 設定一個合適的寬度，讓它在中間不至於太寬 */
-            border-left: 5px solid #27AE60; /* 左側綠線 */
+            padding-left: 20px;
+            max-width: 350px;
+            border-left: 5px solid #27AE60;
         }
         
         .video-inner-container {
@@ -32,7 +59,7 @@
             border-radius: 16px;
             padding: 40px;
             box-shadow: 0 6px 18px rgba(0,0,0,0.04);
-            border-top: 5px solid #ff9800; /* 給它一條跟協進橘一樣的漂亮頂條 */
+            border-top: 5px solid #ff9800;
         }
 
         .video-responsive-wrapper {
@@ -41,7 +68,7 @@
             max-width: 850px;
             margin: 0 auto;
             height: 0;
-            padding-bottom: 47.8%; /* 讓網頁在大螢幕下維持完美的比例縮放 */
+            padding-bottom: 47.8%;
             background-color: #000000;
             border-radius: 12px;
             overflow: hidden;
@@ -50,7 +77,7 @@
         
         @media (max-width: 850px) {
             .video-responsive-wrapper {
-                padding-bottom: 56.25%; /* 手機版自動切換為標準 16:9 */
+                padding-bottom: 56.25%;
             }
             .video-inner-container {
                 padding: 20px;
@@ -66,9 +93,8 @@
             border: none;
         }
         
-        /* 導覽列 App 按鈕 hover 變色效果 */
         .nav-links a[href="#video-section"]:hover {
-            color: #27AE60 !important; /* 當滑鼠移過去時，變成綠色 */
+            color: #27AE60 !important;
             text-decoration: underline; 
         }
         
@@ -77,7 +103,7 @@
             box-sizing: border-box;
         }
         html {
-            scroll-behavior: smooth; /* 點擊超連結時平滑滾動 */
+            scroll-behavior: smooth;
         }
         body {
             font-family: 'Helvetica Neue', Arial, 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
@@ -88,28 +114,27 @@
             line-height: 1.8;
         }
 
-        /* --- 雙 QR Code 並排區塊樣式 --- */
         .sjps-double-qrcode-container {
             display: flex;
             justify-content: space-around;
             align-items: center;
-            flex-wrap: wrap; /* 讓手機版會自動換行 */
+            flex-wrap: wrap;
             background-color: #ffffff;
             padding: 20px;
             margin: 15px 0;
-            border: 2px dashed #ff9800; /* 協進橘虛線外框 */
+            border: 2px dashed #ff9800;
             border-radius: 12px;
         }
 
         .sjps-qrcode-item {
             flex: 1;
-            min-width: 200px; /* 限制最小寬度，防止手機版擠壓 */
+            min-width: 200px;
             text-align: center;
             padding: 10px;
         }
 
         .sjps-qrcode-item img {
-            width: 140px; /* QR Code 大小 */
+            width: 140px;
             height: 140px;
             border: 3px solid #f5f5f5;
             border-radius: 8px;
@@ -134,9 +159,8 @@
             text-decoration: underline;
         }
 
-        /* 頂端動態跑馬燈 */
         .marquee-banner {
-            background-color: #5dc6a6; /* 亮綠藍色背景 */
+            background-color: #5dc6a6;
             color: #FFFFFF;
             padding: 8px 0;
             font-weight: bold;
@@ -155,7 +179,6 @@
             100% { transform: translate3d(-100%, 0, 0); }
         }
 
-        /* 導覽列 */
         header {
             background-color: #FFFFFF;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
@@ -174,7 +197,7 @@
         .logo-area a {
             font-size: 22px;
             font-weight: 800;
-            color: #2D9CDB; /* 溫慢水藍色 */
+            color: #2D9CDB;
             text-decoration: none;
             letter-spacing: 1px;
         }
@@ -187,10 +210,9 @@
             font-size: 15px;
         }
         .nav-links a:hover {
-            color: #27AE60; /* 翠綠色 */
+            color: #27AE60;
         }
 
-        /* 首頁主視覺 */
         .hero-section {
             position: relative;
             height: 520px;
@@ -269,7 +291,6 @@
             box-shadow: 0 6px 20px rgba(242, 201, 76, 0.5);
         }
 
-        /* 關於我們區塊 */
         .about-section {
             max-width: 1200px;
             margin: 60px auto;
@@ -317,7 +338,6 @@
             margin-bottom: 25px;
         }
         
-        /* 核心期盼彩色標籤組 */
         .capsule-group {
             margin-top: 20px;
         }
@@ -335,7 +355,6 @@
         .capsule-2 { background-color: #27AE60; }
         .capsule-3 { background-color: #F2994A; }
 
-        /* 行事曆表格樣式 */
         .calendar-card {
             background: #FFFFFF;
             border-radius: 12px;
@@ -401,7 +420,6 @@
         .bg-green { background-color: #27AE60; }
         .bg-red { background-color: #EB5757; }
 
-        /* 志工九組工作說明區塊 */
         .groups-section {
             background-color: #FFFFFF;
             padding: 70px 20px;
@@ -427,14 +445,12 @@
             margin: 0;
         }
         
-        /* 現代 CSS Grid 網格系統 */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
         }
         
-        /* 卡片樣式 */
         .group-card {
             background-color: #F9F9F9;
             border-radius: 12px;
@@ -464,7 +480,6 @@
             line-height: 1.7;
         }
         
-        /* 卡片內部詳細資訊結構 */
         .card-meta-info {
             font-size: 13px;
             margin-top: auto;
@@ -486,7 +501,6 @@
         .card-green { border-left-color: #27AE60; }
         .card-orange { border-left-color: #F2994A; }
         
-        /* 亮點致謝特殊卡片樣式 */
         .card-highlight {
             border: 2px dashed #2D9CDB !important;
             border-left: 5px dashed #2D9CDB !important;
@@ -505,9 +519,8 @@
             vertical-align: middle;
         }
 
-        /* 📝 線上報名與權益交流區塊 */
         .join-section {
-            background-color: #F2F9FF; /* 淡藍色調溫馨背景 */
+            background-color: #F2F9FF;
             padding: 60px 20px;
             scroll-margin-top: 80px;
         }
@@ -515,7 +528,7 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr; /* 左右對稱雙大欄位 */
+            grid-template-columns: 1fr 1fr;
             gap: 35px;
         }
         .join-big-card {
@@ -523,13 +536,12 @@
             padding: 35px;
             border-radius: 16px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-            border-top: 5px solid #2D9CDB; /* 主調水藍 */
+            border-top: 5px solid #2D9CDB;
         }
         .join-big-card.card-right {
-            border-top-color: #27AE60; /* 右欄社群採用翠綠調 */
+            border-top-color: #27AE60;
         }
         
-        /* 子區塊內間距與底線 */
         .sub-block {
             margin-bottom: 30px;
         }
@@ -588,7 +600,7 @@
         }
         .info-list li::before {
             content: "•";
-            color: #F2994A; /* 亮眼橘色點綴 */
+            color: #F2994A;
             font-weight: bold;
             font-size: 20px;
             position: absolute;
@@ -596,7 +608,6 @@
             top: -2px;
         }
 
-        /* 頁尾 */
         footer {
             background-color: #333333;
             color: #FFFFFF;
@@ -619,9 +630,6 @@
             text-decoration: underline;
         }
 
-        /* ==========================================================================
-           響應式斷點設定 (Media Queries)
-           ========================================================================== */
         @media (max-width: 992px) {
             .grid-container {
                 grid-template-columns: repeat(2, 1fr);
@@ -702,6 +710,13 @@
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSfyA6rw20rnhu20E6SagycfSw0r0I7rHvLh__bJJpOetfDdCg/viewform?pli=1" target="_blank" class="hero-btn">加入我們這個大家庭</a>
         </div>
     </section>
+
+    <!-- 新增：網頁系統通知互動區塊 -->
+    <div class="notification-box">
+        <h3 style="margin: 0 0 8px 0; color: #27AE60; font-size: 16px;">🔔 接收最新活動與排班系統通知</h3>
+        <p style="margin: 0 0 12px 0; font-size: 14px; color: #555;">點擊下方按鈕開啟通知權限，以便第一時間獲得校園志工重要消息！</p>
+        <button class="notify-btn" onclick="requestNotificationPermission()">開啟即時系統通知</button>
+    </div>
 
     <section id="about" class="about-section">
         <div class="about-flex-container">
@@ -1039,6 +1054,7 @@
     </footer>
 
     <script>
+        // 圖片輪播器
         (function() {
             var slides = document.querySelectorAll('.slider-container .slide');
             var currentIndex = 0;
@@ -1052,6 +1068,27 @@
 
             setInterval(nextSlide, slideInterval);
         })();
+
+        // 瀏覽器系統通知功能 (Web Notifications API)
+        function requestNotificationPermission() {
+            if (!("Notification" in window)) {
+                alert("很抱歉，您的瀏覽器不支援桌面通知功能。");
+                return;
+            }
+
+            Notification.requestPermission().then(function (permission) {
+                if (permission === "granted") {
+                    new Notification("協進國小志工團隊", {
+                        body: "太棒了！您已成功訂閱通知，未來將接收到最新校園與志工排班提醒。",
+                        icon: "favicon.png" // 可依需求替換為學校圖示路徑
+                    });
+                } else if (permission === "denied") {
+                    alert("您已封鎖通知權限。若想重新開啟，請從瀏覽器網址列旁的設定（鎖頭圖示）中解除封鎖。");
+                } else {
+                    alert("您尚未授權通知權限。");
+                }
+            });
+        }
     </script>
 </body>
 </html>
