@@ -35,21 +35,24 @@
             background-color: #1E8449;
             transform: translateY(-1px);
         }
-        .gcal-btn {
+
+        /* 新增：通用行事曆 (.ics) 下載按鈕樣式 */
+        .ics-btn {
             display: inline-block;
             margin-top: 6px;
-            padding: 4px 8px;
-            background-color: #d4c3ff;
-            color: rgb(0, 0, 0);
-            font-size: 11px;
+            padding: 3px 6px; /* 將內距縮小 */
+            background-color: #d4c3ff; /* 指定的淺紫色 */
+            color: #333333; /* 深色文字增加對比易讀性 */
+            font-size: 10px; /* 字體縮小 */
             font-weight: bold;
-            text-decoration: none;
+            border: none;
             border-radius: 4px;
+            cursor: pointer;
             transition: 0.3s;
             white-space: nowrap;
         }
-        .gcal-btn:hover {
-            background-color: #3367D6;
+        .ics-btn:hover {
+            background-color: #bca3ff; /* 滑鼠懸停時變成稍深的紫色 */
         }
 
         /* --- 影片教學區塊專屬樣式 --- */
@@ -796,7 +799,7 @@
                                     </td>
                                     <td>
                                         <span class="status-badge bg-orange">學期圓滿</span><br>
-                                        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=協進國小：全校結業式&dates=20260630/20260701&details=12:00放學，當日不供餐，將發放餐盒。" target="_blank" class="gcal-btn">📅 加入日曆</a>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：全校結業式', '20260630', '12:00放學，當日不供餐，將發放餐盒。')">📅 加入行事曆</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -807,7 +810,7 @@
                                     </td>
                                     <td>
                                         <span class="status-badge bg-red">🚨 交通值勤</span><br>
-                                        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=協進國小：全校返校日（交通值勤）&dates=20260806/20260807&details=10:10放學，交通導護志工請留意值勤時間。" target="_blank" class="gcal-btn">📅 加入日曆</a>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：全校返校日（交通值勤）', '20260806', '10:10放學，交通導護志工請留意值勤時間。')">📅 加入行事曆</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -818,7 +821,7 @@
                                     </td>
                                     <td>
                                         <span class="status-badge bg-blue">🙋 4員協助</span><br>
-                                        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=協進國小：小一新生訓練協助&dates=20260822/20260823&details=協助志工請穿著「藍色運動會紀念T」於 08:00 前到場。" target="_blank" class="gcal-btn">📅 加入日曆</a>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：小一新生訓練協助', '20260822', '協助志工請穿著「藍色運動會紀念T」於 08:00 前到場，後續將私訊提醒細節。')">📅 加入行事曆</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -829,7 +832,7 @@
                                     </td>
                                     <td>
                                         <span class="status-badge bg-red">🚨 交通值勤</span><br>
-                                        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=協進國小：全校返校日（交通值勤）&dates=20260828/20260829&details=10:10放學，交通志工請協助導護。" target="_blank" class="gcal-btn">📅 加入日曆</a>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：全校返校日（交通值勤）', '20260828', '10:10放學，交通志工請協助導護。')">📅 加入行事曆</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -840,7 +843,7 @@
                                     </td>
                                     <td>
                                         <span class="status-badge bg-red">🚨 交通值勤</span><br>
-                                        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=協進國小：115學年度正式開學&dates=20260831/20260901&details=交通志工即日起全面啟動值勤，守護孩子安全！" target="_blank" class="gcal-btn">📅 加入日曆</a>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：115學年度正式開學', '20260831', '交通志工即日起全面啟動值勤，守護孩子安全！')">📅 加入行事曆</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -851,7 +854,7 @@
                                     </td>
                                     <td>
                                         <span class="status-badge bg-green">🩺 健檢排班</span><br>
-                                        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=協進國小：開學第一週健檢排班&dates=20260901/20260908&details=預計進行全校學生身高、體重與視力測量檢查。" target="_blank" class="gcal-btn">📅 加入日曆</a>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：開學第一週健檢排班', '20260901', '預計進行全校學生身高、體重與視力測量檢查。')">📅 加入行事曆</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -862,7 +865,7 @@
                                     </td>
                                     <td>
                                         <span class="status-badge bg-blue">🤝 歡迎登記</span><br>
-                                        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=協進國小：115新學年志工期初聚會&dates=20260917/20260918&details=待與校長及主任確認最終日期後，將於開學後正式公告。" target="_blank" class="gcal-btn">📅 加入日曆</a>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：115新學年志工期初聚會', '20260917', '待與校長及主任確認最終日期後，將於開學後正式公告。誠摯邀請全體夥伴登記參加！')">📅 加入行事曆</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -1125,6 +1128,47 @@
                     alert("您尚未授權通知權限。");
                 }
             });
+        }
+
+        // 產生並下載通用行事曆 (.ics) 檔案
+        function downloadICS(title, dateStr, details) {
+            // 解析傳入的日期 (格式: YYYYMMDD)
+            var y = parseInt(dateStr.substring(0, 4));
+            var m = parseInt(dateStr.substring(4, 6)) - 1; // JavaScript 月份為 0-11
+            var d = parseInt(dateStr.substring(6, 8));
+            
+            // 行事曆全天活動通常需要指定「結束日期」為隔天
+            var startDate = new Date(y, m, d);
+            var endDate = new Date(startDate);
+            endDate.setDate(endDate.getDate() + 1);
+            
+            // 將結束日期轉回 YYYYMMDD 格式
+            var endY = endDate.getFullYear();
+            var endM = String(endDate.getMonth() + 1).padStart(2, '0');
+            var endD = String(endDate.getDate()).padStart(2, '0');
+            var endDateStr = "" + endY + endM + endD;
+
+            // 組合 ICS 檔案內容
+            var icsContent = 
+                "BEGIN:VCALENDAR\n" +
+                "VERSION:2.0\n" +
+                "PRODID:-//SJPS Volunteer//TW\n" +
+                "BEGIN:VEVENT\n" +
+                "DTSTART;VALUE=DATE:" + dateStr + "\n" +
+                "DTEND;VALUE=DATE:" + endDateStr + "\n" +
+                "SUMMARY:" + title + "\n" +
+                "DESCRIPTION:" + details + "\n" +
+                "END:VEVENT\n" +
+                "END:VCALENDAR";
+
+            // 建立 Blob 物件並觸發下載
+            var blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+            var link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.setAttribute('download', title + '.ics');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
     </script>
 </body>
