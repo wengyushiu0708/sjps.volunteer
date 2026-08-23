@@ -1123,14 +1123,14 @@
         // 瀏覽器系統通知功能 (Web Notifications API)
         function requestNotificationPermission() {
             if (!("Notification" in window)) {
-                alert("很抱歉，您的瀏覽器不支援桌面通知功能。請先按照網頁最下方『手機下載App操作影片教學』，下載App完開啟通知後，就能接收到最新通知！");
+                alert("很抱歉，您的瀏覽器不支援桌面通知功能。請先按照網頁最下方『手機下載App操作影片教學』，完成下載App，記得依照您需要來服務的時間，加入您手幾的行事曆，開啟通知後，就能接收到提醒通知！");
                 return;
             }
 
             Notification.requestPermission().then(function (permission) {
                 if (permission === "granted") {
                     new Notification("協進國小志工團隊", {
-                        body: "太棒了！您已成功訂閱通知，未來將接收到最新校園與志工排班提醒。",
+                        body: "太棒了！您已成功開啟通知，記得依照您需要來服務的時間，加入您手幾的行事曆，開啟通知後，就能接收到提醒通知！",
                         icon: "favicon.png"
                     });
                 } else if (permission === "denied") {
