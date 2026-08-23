@@ -36,14 +36,14 @@
             transform: translateY(-1px);
         }
 
-        /* 通用行事曆 (.ics) 下載按鈕樣式 */
+        /* 新增：通用行事曆 (.ics) 下載按鈕樣式 */
         .ics-btn {
             display: inline-block;
             margin-top: 6px;
-            padding: 3px 6px;
-            background-color: #d4c3ff;
-            color: #333333;
-            font-size: 10px;
+            padding: 3px 6px; /* 將內距縮小 */
+            background-color: #d4c3ff; /* 指定的淺紫色 */
+            color: #333333; /* 深色文字增加對比易讀性 */
+            font-size: 10px; /* 字體縮小 */
             font-weight: bold;
             border: none;
             border-radius: 4px;
@@ -52,34 +52,7 @@
             white-space: nowrap;
         }
         .ics-btn:hover {
-            background-color: #bca3ff;
-        }
-
-        /* --- 底部雙欄區塊（意見回饋與縮小的天氣預報） --- */
-        .bottom-dual-section {
-            max-width: 1200px;
-            margin: 60px auto 20px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            scroll-margin-top: 100px;
-        }
-        .blockContent {
-            background: #FFFFFF;
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
-            border-top: 5px solid #2D9CDB;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        .blockTitle {
-            font-size: 22px;
-            color: #2D9CDB;
-            margin-bottom: 15px;
-            font-weight: 700;
+            background-color: #bca3ff; /* 滑鼠懸停時變成稍深的紫色 */
         }
 
         /* --- 影片教學區塊專屬樣式 --- */
@@ -128,9 +101,6 @@
             .video-inner-container {
                 padding: 20px;
             }
-            .bottom-dual-section {
-                grid-template-columns: 1fr;
-            }
         }
 
         .video-responsive-wrapper iframe {
@@ -161,6 +131,51 @@
             background-color: #F9F9F9;
             color: #333333;
             line-height: 1.8;
+        }
+
+        .sjps-double-qrcode-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            background-color: #ffffff;
+            padding: 20px;
+            margin: 15px 0;
+            border: 2px dashed #ff9800;
+            border-radius: 12px;
+        }
+
+        .sjps-qrcode-item {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .sjps-qrcode-item img {
+            width: 140px;
+            height: 140px;
+            border: 3px solid #f5f5f5;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 8px;
+        }
+
+        .sjps-qrcode-label {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .btn-link {
+            display: inline-block;
+            margin-top: 5px;
+            color: #ff9800;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .btn-link:hover {
+            text-decoration: underline;
         }
 
         .marquee-banner {
@@ -208,7 +223,7 @@
         .nav-links a {
             color: #555555;
             text-decoration: none;
-            margin-left: 20px;
+            margin-left: 25px;
             font-weight: 500;
             transition: color 0.3s ease;
             font-size: 15px;
@@ -655,7 +670,7 @@
                 padding: 10px 20px;
             }
             .nav-links a {
-                margin: 0 8px;
+                margin: 0 10px;
                 font-size: 14px;
             }
             .hero-section {
@@ -695,9 +710,7 @@
                 <a href="#about">關於我們</a>
                 <a href="#volunteer-groups">組別介紹</a>
                 <a href="#join-us">線上報名</a>
-                <a href="#weather-section">天氣預報</a>
-                <a href="#feedback-section">意見回饋</a>
-                <a href="#video-section" style="color: #27AE60; font-weight: bold;">下載App影片教學</a>
+                <a href="#video-section" style="color: #585652; font-weight: bold;">下載App影片教學</a>
             </nav>
         </div>
     </header>
@@ -992,30 +1005,6 @@
         </div>
     </section>
 
-    <!-- 底部雙欄：左側意見回饋、右側縮小的天氣預報 -->
-    <div class="bottom-dual-section">
-        <!-- 意見回饋區塊 -->
-        <section id="feedback-section">
-            <div class="blockContent" style="border-top-color: #27AE60;">
-                <h3 class="blockTitle" style="color: #27AE60;">意見回饋</h3>
-                <div style="text-align: center; padding: 20px 0; display: flex; flex-direction: column; justify-content: center; height: 100%;">
-                    <p style="color: #555; margin-bottom: 20px; font-size: 14px;">感謝您對協進國小志工團隊的支持！若您對本網頁或志工服務有任何建議，歡迎填寫回饋表單。</p>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfyA6rw20rnhu20E6SagycfSw0r0I7rHvLh__bJJpOetfDdCg/viewform?pli=1" target="_blank" class="hero-btn" style="background-color: #27AE60; padding: 10px 25px; font-size: 14px;">填寫意見回饋表單 ↗</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- 天氣預報區塊 (縮小並靠右) -->
-        <section id="weather-section">
-            <div class="blockContent">
-                <h3 class="blockTitle">天氣預報</h3>
-                <div style="width: 100%; height: 280px; overflow: hidden; border-radius: 8px;">
-                    <iframe width="100%" height="280" src="https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=mm&metricTemp=°C&metricWind=default&zoom=6&overlay=wind&product=ecmwf&level=surface&lat=21.433&lon=120.784&detailLat=22.992&detailLon=120.185&detail=true" frameborder="0" title="天氣預報"></iframe>
-                </div>
-            </div>
-        </section>
-    </div>
-
     <section id="join-us" class="join-section">
         <div class="join-container">
             
@@ -1099,7 +1088,7 @@
             <p>
                 📍 地址：<a href="https://maps.google.com/?q=臺南市中西區金華路四段17號" target="_blank" class="footer-link">700臺南市中西區金華路四段17號</a>
                 <span class="footer-divider">｜</span>
-                📞 聯絡電話：<a href="tel:+886-6-2223014" class="footer-link">(06) 2223369</a>
+                📞 聯絡電話：<a href="tel:+886-6-2223369" class="footer-link">(06) 2223369</a>
             </p>
         </div>
     </footer>
@@ -1123,15 +1112,15 @@
         // 瀏覽器系統通知功能 (Web Notifications API)
         function requestNotificationPermission() {
             if (!("Notification" in window)) {
-                alert("很抱歉，您的瀏覽器不支援桌面通知功能。請先按照網頁最下方『手機下載App操作影片教學』，完成下載App，記得依照您需要來服務的時間，加入您手幾的行事曆，開啟通知後，就能接收到提醒通知！");
+                alert("很抱歉，您的瀏覽器不支援桌面通知功能。請先按照網頁最下方『手機下載App操作影片教學』，下載App完開啟通知後，就能接收到最新通知！");
                 return;
             }
 
             Notification.requestPermission().then(function (permission) {
                 if (permission === "granted") {
                     new Notification("協進國小志工團隊", {
-                        body: "太棒了！您已成功開啟通知，記得依照您需要來服務的時間，加入您手幾的行事曆，開啟通知後，就能接收到提醒通知！",
-                        icon: "favicon.png"
+                        body: "太棒了！您已成功訂閱通知，未來將接收到最新校園與志工排班提醒。",
+                        icon: "favicon.png" // 可依需求替換為學校圖示路徑
                     });
                 } else if (permission === "denied") {
                     alert("您已封鎖通知權限。若想重新開啟，請從瀏覽器網址列旁的設定（鎖頭圖示）中解除封鎖。");
@@ -1143,19 +1132,23 @@
 
         // 產生並下載通用行事曆 (.ics) 檔案
         function downloadICS(title, dateStr, details) {
+            // 解析傳入的日期 (格式: YYYYMMDD)
             var y = parseInt(dateStr.substring(0, 4));
-            var m = parseInt(dateStr.substring(4, 6)) - 1; 
+            var m = parseInt(dateStr.substring(4, 6)) - 1; // JavaScript 月份為 0-11
             var d = parseInt(dateStr.substring(6, 8));
             
+            // 行事曆全天活動通常需要指定「結束日期」為隔天
             var startDate = new Date(y, m, d);
             var endDate = new Date(startDate);
             endDate.setDate(endDate.getDate() + 1);
             
+            // 將結束日期轉回 YYYYMMDD 格式
             var endY = endDate.getFullYear();
             var endM = String(endDate.getMonth() + 1).padStart(2, '0');
             var endD = String(endDate.getDate()).padStart(2, '0');
             var endDateStr = "" + endY + endM + endD;
 
+            // 組合 ICS 檔案內容
             var icsContent = 
                 "BEGIN:VCALENDAR\n" +
                 "VERSION:2.0\n" +
@@ -1168,7 +1161,8 @@
                 "END:VEVENT\n" +
                 "END:VCALENDAR";
 
-    var blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+            // 建立 Blob 物件並觸發下載
+            var blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
             var link = document.createElement('a');
             link.href = window.URL.createObjectURL(blob);
             link.setAttribute('download', title + '.ics');
