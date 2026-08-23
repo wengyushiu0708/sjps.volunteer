@@ -55,37 +55,34 @@
             background-color: #bca3ff;
         }
 
-        /* --- 底部雙欄區塊（意見回饋與縮小的天氣預報） --- */
-        .bottom-dual-section {
+        /* --- 單欄精簡區塊共用樣式（天氣預報與意見回饋相同寬度與高度） --- */
+        .single-slim-section {
             max-width: 1200px;
-            margin: 60px auto 20px auto;
+            margin: 0 auto 20px auto;
             padding: 0 20px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
             scroll-margin-top: 100px;
         }
+
         .blockContent {
             background: #FFFFFF;
             border-radius: 16px;
-            padding: 20px;
+            padding: 15px 20px;
             box-shadow: 0 6px 18px rgba(0,0,0,0.04);
             border-top: 5px solid #2D9CDB;
-            height: 100%;
             display: flex;
             flex-direction: column;
         }
         .blockTitle {
-            font-size: 22px;
+            font-size: 18px;
             color: #2D9CDB;
-            margin-bottom: 15px;
+            margin-bottom: 4px;
             font-weight: 700;
         }
 
         /* --- 影片教學區塊專屬樣式 --- */
         .video-section {
             max-width: 600px;
-            margin: 60px auto 20px auto;
+            margin: 40px auto 20px auto;
             padding: 0 20px;
             scroll-margin-top: 100px;
         }
@@ -127,9 +124,6 @@
             }
             .video-inner-container {
                 padding: 20px;
-            }
-            .bottom-dual-section {
-                grid-template-columns: 1fr;
             }
         }
 
@@ -991,26 +985,37 @@
             </div>
         </div>
     </section>
+    
 
-    <!-- 底部雙欄：左側意見回饋、右側縮小的天氣預報 -->
-    <div class="bottom-dual-section">
-        <!-- 意見回饋區塊 -->
-        <section id="feedback-section">
-            <div class="blockContent" style="border-top-color: #27AE60;">
-                <h3 class="blockTitle" style="color: #27AE60;">意見回饋</h3>
-                <div style="text-align: center; padding: 20px 0; display: flex; flex-direction: column; justify-content: center; height: 100%;">
-                    <p style="color: #555; margin-bottom: 20px; font-size: 14px;">感謝您對協進國小志工團隊的支持！若您對本網頁或志工服務有任何建議，歡迎填寫回饋表單。</p>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfyA6rw20rnhu20E6SagycfSw0r0I7rHvLh__bJJpOetfDdCg/viewform?pli=1" target="_blank" class="hero-btn" style="background-color: #27AE60; padding: 10px 25px; font-size: 14px;">填寫意見回饋表單 ↗</a>
+    <!-- 單欄精簡一條：天氣預報區塊 (高度與下方意見回饋一致) -->
+    <div class="single-slim-section">
+        <section id="weather-section">
+            <div class="blockContent" style="border-top-color: #2D9CDB; padding: 15px 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                    <div>
+                        <h3 class="blockTitle" style="color: #2D9CDB; margin-bottom: 4px; font-size: 18px;">天氣預報</h3>
+                        <p style="color: #555; margin: 0; font-size: 13px;">即時掌握在地氣象與風向資訊，守護每位志工夥伴的戶外值勤安全。</p>
+                    </div>
+                    <div>
+                        <a href="https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=mm&metricTemp=%C2%B0C&metricWind=default&zoom=6&overlay=wind&product=ecmwf&level=surface&lat=21.433&lon=120.784&detailLat=22.992&detailLon=120.185&detail=true" target="_blank" class="hero-btn" style="background-color: #2D9CDB; padding: 8px 20px; font-size: 13px;">查看即時氣象地圖 ↗</a>
+                    </div>
                 </div>
             </div>
         </section>
+    </div>
 
-        <!-- 天氣預報區塊 (縮小並靠右) -->
-        <section id="weather-section">
-            <div class="blockContent">
-                <h3 class="blockTitle">天氣預報</h3>
-                <div style="width: 100%; height: 280px; overflow: hidden; border-radius: 8px;">
-                    <iframe width="100%" height="280" src="https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=mm&metricTemp=°C&metricWind=default&zoom=6&overlay=wind&product=ecmwf&level=surface&lat=21.433&lon=120.784&detailLat=22.992&detailLon=120.185&detail=true" frameborder="0" title="天氣預報"></iframe>
+    <!-- 單欄精簡一條：意見回饋區塊 -->
+    <div class="single-slim-section">
+        <section id="feedback-section">
+            <div class="blockContent" style="border-top-color: #27AE60; padding: 15px 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                    <div>
+                        <h3 class="blockTitle" style="color: #27AE60; margin-bottom: 4px; font-size: 18px;">意見回饋</h3>
+                        <p style="color: #555; margin: 0; font-size: 13px;">感謝您對協進國小志工團隊的支持！若您對本網頁或志工服務有任何建議，歡迎填寫回饋表單。</p>
+                    </div>
+                    <div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfyA6rw20rnhu20E6SagycfSw0r0I7rHvLh__bJJpOetfDdCg/viewform?pli=1" target="_blank" class="hero-btn" style="background-color: #27AE60; padding: 8px 20px; font-size: 13px;">填寫意見回饋表單 ↗</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1168,7 +1173,7 @@
                 "END:VEVENT\n" +
                 "END:VCALENDAR";
 
-    var blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+            var blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
             var link = document.createElement('a');
             link.href = window.URL.createObjectURL(blob);
             link.setAttribute('download', title + '.ics');
