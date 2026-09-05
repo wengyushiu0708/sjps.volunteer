@@ -295,16 +295,18 @@
             padding: 0 20px;
             scroll-margin-top: 100px;
         }
+        
+        /* 左右並排佈局容器 */
         .about-flex-container {
             display: flex;
             gap: 40px;
-            align-items: center;
+            align-items: flex-start;
         }
         .about-col-left {
             flex: 1;
         }
         .about-col-right {
-            flex: 1.1;
+            flex: 1;
         }
         
         .section-title-wrapper {
@@ -353,22 +355,38 @@
         .capsule-2 { background-color: #27AE60; }
         .capsule-3 { background-color: #F2994A; }
 
+        /* --- 行事曆最上方寬版橫向展現與左右兩欄分段樣式 --- */
+        .calendar-top-section {
+            max-width: 1200px;
+            margin: 40px auto 20px auto;
+            padding: 0 20px;
+        }
         .calendar-card {
             background: #FFFFFF;
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 24px;
             box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-            border-top: 4px solid #27AE60;
+            border-top: 5px solid #27AE60;
         }
         .calendar-card h3 {
             margin: 0 0 18px 0;
-            font-size: 18px;
+            font-size: 20px;
             color: #333;
             font-weight: 700;
             display: flex;
             align-items: center;
         }
         
+        /* 左右兩欄分段容器 */
+        .calendar-split-container {
+            display: flex;
+            gap: 25px;
+        }
+        .calendar-col {
+            flex: 1;
+            min-width: 0; /* 防止表格撐開跑版 */
+        }
+
         .table-responsive {
             width: 100%;
             overflow-x: auto;
@@ -377,19 +395,19 @@
         .calendar-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 14px;
-            min-width: 450px;
+            font-size: 13px;
         }
         .calendar-table th {
             background-color: #F2F2F2;
             color: #444444;
             font-weight: 600;
-            padding: 10px 12px;
+            padding: 10px 10px;
             text-align: left;
             border-bottom: 2px solid #E0E0E0;
+            white-space: nowrap;
         }
         .calendar-table td {
-            padding: 12px 12px;
+            padding: 10px 10px;
             border-bottom: 1px solid #EEEEEE;
             color: #555555;
             vertical-align: top;
@@ -400,14 +418,14 @@
         .calendar-table small {
             display: block;
             color: #777777;
-            font-size: 12px;
-            margin-top: 4px;
-            line-height: 1.5;
+            font-size: 11px;
+            margin-top: 3px;
+            line-height: 1.4;
         }
         .status-badge {
             color: #FFFFFF;
-            padding: 2px 8px;
-            font-size: 11px;
+            padding: 2px 6px;
+            font-size: 10px;
             border-radius: 4px;
             font-weight: bold;
             display: inline-block;
@@ -632,12 +650,12 @@
             .grid-container {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .about-flex-container, .join-container {
+            .about-flex-container, .join-container, .calendar-split-container {
                 flex-direction: column;
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 20px;
             }
-            .about-col-left, .about-col-right {
+            .about-col-left, .about-col-right, .calendar-col {
                 width: 100%;
             }
         }
@@ -664,8 +682,8 @@
             .grid-container {
                 grid-template-columns: 1fr;
             }
-            .about-section, .groups-section, .join-section {
-                margin: 40px auto;
+            .about-section, .groups-section, .join-section, .calendar-top-section {
+                margin: 30px auto;
                 padding: 0 15px;
             }
         }
@@ -687,6 +705,7 @@
             <nav class="nav-links">
                 <a href="#">最新消息</a>
                 <a href="#about">關於我們</a>
+                <a href="#calendar-section">校園行事曆</a>
                 <a href="#volunteer-groups">組別介紹</a>
                 <a href="#join-us">線上報名</a>
                 <a href="#weather-section">天氣預報</a>
@@ -719,9 +738,264 @@
         <button class="notify-btn" onclick="requestNotificationPermission()">開啟即時系統通知</button>
     </div>
 
+    <!-- 獨立寬版橫向展現之行事曆區塊（分左右兩欄分段） -->
+    <section id="calendar-section" class="calendar-top-section">
+        <div class="calendar-card">
+            <h3>📅 115學年度重要校園行事曆與志工服務提醒</h3>
+            
+            <div class="calendar-split-container">
+                <!-- 左欄：前半段行事曆 -->
+                <div class="calendar-col">
+                    <div class="table-responsive">
+                        <table class="calendar-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 25%;">日期時間</th>
+                                    <th style="width: 50%;">活動項目與注意事項備註</th>
+                                    <th style="width: 25%;">加入行事曆</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>08 / 31</strong> (一)</td>
+                                    <td>
+                                        <strong>開學日</strong>
+                                        <small>⏰ 115學年度正式開學，交通志工全面啟動值勤！</small>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge bg-red">🚨 交通值勤</span><br>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：開學日', '20260831', '115學年度正式開學，交通志工全面啟動值勤！')">📅 加入</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>09 / 05</strong> (六)</td>
+                                    <td>
+                                        <strong>南二區國語文競賽</strong>
+                                        <small>🏆 相關活動支援與配合事項。</small>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge bg-blue">📢 活動支援</span><br>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：南二區國語文競賽', '20260905', '南二區國語文競賽活動。')">📅 加入</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>09 / 17</strong> (四)</td>
+                                    <td>
+                                        <strong>期初聚會</strong>
+                                        <small>💬 115新學年志工期初聚會，誠摯邀請全體夥伴參加！</small>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge bg-blue">🤝 歡迎參加</span><br>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：期初聚會', '20260917', '115新學年志工期初聚會。')">📅 加入</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>09 / 18</strong> (五)</td>
+                                    <td>
+                                        <strong>班親會</strong>
+                                        <small>🏫 親師交流與班級說明會。</small>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge bg-blue">👥 班親會</span><br>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：班親會', '20260918', '班親會親師交流。')">📅 加入</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>09 / 25</strong> (五)</td>
+                                    <td>
+                                        <strong>中秋節放假</strong>
+                                        <small>🌙 國定假日停課一日。</small>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge bg-orange">☕ 放假休息</span><br>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：中秋節放假', '20260925', '中秋節放假一日。')">📅 加入</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>09 / 28</strong> (一)</td>
+                                    <td>
+                                        <strong>教師節放假</strong>
+                                        <small>🌸 敬師節放假一日。</small>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge bg-orange">☕ 放假休息</span><br>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：教師節放假', '20260928', '教師節放假一日。')">📅 加入</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>10 / 09</strong> (五)</td>
+                                    <td>
+                                        <strong>國慶日彈性放假</strong>
+                                        <small>🎉 國慶連續假期彈性放假。</small>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge bg-orange">☕ 放假休息</span><br>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：國慶日彈性放假', '20261009', '國慶日彈性放假。')">📅 加入</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>10 / 12</strong> (一)</td>
+                                    <td>
+                                        <strong>流感疫苗接種</strong>
+                                        <small>💉 配合校園衛生保健施打流感疫苗。</small>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge bg-green">🩺 疫苗協助</span><br>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：流感疫苗接種', '20261012', '流感疫苗接種協助。')">📅 加入</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>10 / 26</strong> (一)</td>
+                                    <td>
+                                        <strong>光復節彈性放假</strong>
+                                        <small>🌟 臺灣光復節彈性放假。</small>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge bg-orange">☕ 放假休息</span><br>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：光復節彈性放假', '20261026', '光復節彈性放假。')">📅 加入</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>11 / 05 - 06</strong><br>(四－五)</td>
+                                    <td>
+                                        <strong>第一次成績考查</strong>
+                                        <small>📝 定期學業評量。</small>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge bg-blue">📚 定期考查</span><br>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：第一次成績考查', '20261105', '第一次成績考查。')">📅 加入</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 右欄：後半段行事曆 -->
+                <div class="calendar-col">
+                    <div class="table-responsive">
+                        <table class="calendar-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 25%;">日期時間</th>
+                                    <th style="width: 50%;">活動項目與注意事項備註</th>
+                                    <th style="width: 25%;">加入行事曆</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>11 / 10</strong> (二)</td>
+                                    <td>
+                                        <strong>一、四年級理學檢查</strong>
+                                        <small>🩺 協助一、四年級學生健康理學檢查。</small>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge bg-green">🩺 健檢排班</span><br>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：一四年級理學檢查', '20261110', '一、四年級理學檢查。')">📅 加入</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>11 / 16</strong> (一)</td>
+                                    <td>
+                                        <strong>預計運動會會前賽開始</strong>
+                                        <small>🏃 運動會各項會前賽事及秩序維護。</small>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge bg-red">🚨 機動支援</span><br>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：運動會會前賽開始', '20261116', '預計運動會會前賽開始。')">📅 加入</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>12 / 19</strong> (六)</td>
+                                    <td>
+                                        <strong>校慶運動會</strong>
+                                        <small>🎉 全校校慶運動會盛大舉行！</small>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge bg-red">🚩 全力支援</span><br>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：校慶運動會', '20261219', '校慶運動會活動。')">📅 加入</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>12 / 24</strong> (四)</td>
+                                    <td>
+                                        <strong>運動會補假</strong>
+                                        <small>☕ 因校慶運動會於週六舉行，當日補假一日。</small>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge bg-orange">☕ 放假休息</span><br>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：運動會補假', '20261224', '運動會補假一日。')">📅 加入</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>12 / 25</strong> (五)</td>
+                                    <td>
+                                        <strong>行憲紀念日放假</strong>
+                                        <small>📜 國定假日放假一日。</small>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge bg-orange">☕ 放假休息</span><br>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：行憲紀念日放假', '20261225', '行憲紀念日放假一日。')">📅 加入</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>01 / 01</strong> (五)</td>
+                                    <td>
+                                        <strong>元旦放假</strong>
+                                        <small>🎆 開國紀念日放假一日。</small>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge bg-orange">☕ 放假休息</span><br>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：元旦放假', '20270101', '元旦放假一日。')">📅 加入</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>01 / 12 - 13</strong><br>(二－三)</td>
+                                    <td>
+                                        <strong>第二次成績考查</strong>
+                                        <small>📚 學期末定期學業評量。</small>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge bg-blue">📚 定期考查</span><br>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：第二次成績考查', '20270112', '第二次成績考查。')">📅 加入</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>01 / 20</strong> (二)</td>
+                                    <td>
+                                        <strong>休業式</strong>
+                                        <small>🎒 本學期結束，準備迎接寒假。</small>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge bg-orange">學期圓滿</span><br>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：休業式', '20270120', '休業式，準備迎接寒假。')">📅 加入</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>02 / 11</strong> (四)</td>
+                                    <td>
+                                        <strong>開學</strong>
+                                        <small>🌱 下學期正式開學日。</small>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge bg-red">🚨 交通值勤</span><br>
+                                        <button class="ics-btn" onclick="downloadICS('協進國小：下學期開學日', '20270211', '下學期正式開學。')">📅 加入</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 關於我們主區塊（左右並排） -->
     <section id="about" class="about-section">
         <div class="about-flex-container">
             
+            <!-- 左側：關於我們｜志工精神 -->
             <div class="about-col-left">
                 <div class="section-title-wrapper">
                     <span class="section-tag">ABOUT US</span>
@@ -739,15 +1013,18 @@
                     <span class="capsule capsule-2">🌱 守護孩子成長</span>
                     <span class="capsule capsule-3">🤝 營造幸福生活</span>
                 </div>
-
-                <div class="volunteer-info-box" style="margin-top: 25px; padding: 20px; background: #ffffff; border: 1px solid #eee; border-radius: 12px; border-left: 5px solid #27AE60; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+            </div>
+            
+            <!-- 右側：志工團交流與培訓資源 -->
+            <div class="about-col-right">
+                <div class="volunteer-info-box" style="padding: 24px; background: #ffffff; border: 1px solid #eee; border-radius: 12px; border-left: 5px solid #27AE60; box-shadow: 0 6px 18px rgba(0,0,0,0.05);">
                     <h3 style="margin-top: 0; color: #333; font-size: 18px;">志工團交流與培訓資源</h3>
                     <p style="margin-bottom: 15px;">若您有任何疑問，歡迎來信：<br>
                        <a href="mailto:sjps.mama@gmail.com" class="hover-link" style="color: #27AE60; font-weight: bold; text-decoration: none;">✉️ sjps.mama@gmail.com</a>
                     </p>
                     <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 8px;"><a href="https://elearning.taipei/mpage/sso_moodle?redirectPage=course&cid=2184&eid=" target="_blank" class="hover-link" style="text-decoration: none; color: #555; transition: 0.3s;">▶ 台北E大線上志工基礎教育訓練</a></li>
-                        <li style="margin-bottom: 8px;"><a href="https://vol.mohw.gov.tw/vol2/" target="_blank" class="hover-link" style="text-decoration: none; color: #555; transition: 0.3s;">▶ 衛生福利部志願服務資訊網</a></li>
+                        <li style="margin-bottom: 10px;"><a href="https://elearning.taipei/mpage/sso_moodle?redirectPage=course&cid=2184&eid=" target="_blank" class="hover-link" style="text-decoration: none; color: #555; transition: 0.3s;">▶ 台北E大線上志工基礎教育訓練</a></li>
+                        <li style="margin-bottom: 10px;"><a href="https://vol.mohw.gov.tw/vol2/" target="_blank" class="hover-link" style="text-decoration: none; color: #555; transition: 0.3s;">▶ 衛生福利部志願服務資訊網</a></li>
                         <li><a href="https://vt.tainan.gov.tw/" target="_blank" class="hover-link" style="text-decoration: none; color: #555; transition: 0.3s;">▶ 台南市志願服務網</a></li>
                     </ul>
                     
@@ -757,102 +1034,6 @@
                             text-decoration: underline !important;
                         }
                     </style>
-                </div>
-            </div>
-            
-            <div class="about-col-right">
-                <div class="calendar-card">
-                    <h3>📅 115學年度重要校園行事曆與志工服務提醒</h3>
-                    <div class="table-responsive">
-                        <table class="calendar-table">
-                            <thead>
-                                <tr>
-                                    <th style="width: 25%;">日期時間</th>
-                                    <th style="width: 50%;">活動項目與注意事項備註</th>
-                                    <th style="width: 25%;">志工提醒 / 加入行事曆</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>06 / 30</strong> (二)</td>
-                                    <td>
-                                        <strong>全校結業式</strong>
-                                        <small>⏱️ 12:00 放學<br>🍱 當日不供餐，將發放餐盒。</small>
-                                    </td>
-                                    <td>
-                                        <span class="status-badge bg-orange">學期圓滿</span><br>
-                                        <button class="ics-btn" onclick="downloadICS('協進國小：全校結業式', '20260630', '12:00放學，當日不供餐，將發放餐盒。')">📅 加入行事曆</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><strong>08 / 06</strong> (四)</td>
-                                    <td>
-                                        <strong>全校返校日</strong>
-                                        <small>⏱️ 10:10 放學</small>
-                                    </td>
-                                    <td>
-                                        <span class="status-badge bg-red">🚨 交通值勤</span><br>
-                                        <button class="ics-btn" onclick="downloadICS('協進國小：全校返校日（交通值勤）', '20260806', '10:10放學，交通導護志工請留意值勤時間。')">📅 加入行事曆</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><strong>08 / 22</strong> (六)</td>
-                                    <td>
-                                        <strong>小一新生訓練</strong>
-                                        <small>📢 歡迎今年家有新生的家長踴躍參加！<br>👕 協助志工請穿著「藍色運動會紀念T」於 08:00 前到場，後續將私訊提醒細節。</small>
-                                    </td>
-                                    <td>
-                                        <span class="status-badge bg-blue">🙋 4員協助</span><br>
-                                        <button class="ics-btn" onclick="downloadICS('協進國小：小一新生訓練協助', '20260822', '協助志工請穿著「藍色運動會紀念T」於 08:00 前到場，後續將私訊提醒細節。')">📅 加入行事曆</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><strong>08 / 28</strong> (五)</td>
-                                    <td>
-                                        <strong>全校返校日</strong>
-                                        <small>⏱️ 10:10 放學</small>
-                                    </td>
-                                    <td>
-                                        <span class="status-badge bg-red">🚨 交通值勤</span><br>
-                                        <button class="ics-btn" onclick="downloadICS('協進國小：全校返校日（交通值勤）', '20260828', '10:10放學，交通志工請協助導護。')">📅 加入行事曆</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><strong>08 / 31</strong> (一)</td>
-                                    <td>
-                                        <strong>115學年度正式開學</strong>
-                                        <small>⏰ 恢復各學年正常上放學時間。<br>🚗 交通志工即日起全面啟動值勤，守護孩子安全！</small>
-                                    </td>
-                                    <td>
-                                        <span class="status-badge bg-red">🚨 交通值勤</span><br>
-                                        <button class="ics-btn" onclick="downloadICS('協進國小：115學年度正式開學', '20260831', '交通志工即日起全面啟動值勤，守護孩子安全！')">📅 加入行事曆</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><strong>09 / 01</strong> (二)<br>至 <strong>09 / 07</strong> (一)</td>
-                                    <td>
-                                        <strong>開學第一週健檢</strong>
-                                        <small>📏 預計進行全校學生身高、體重與視力測量檢查。</small>
-                                    </td>
-                                    <td>
-                                        <span class="status-badge bg-green">🩺 健檢排班</span><br>
-                                        <button class="ics-btn" onclick="downloadICS('協進國小：開學第一週健檢排班', '20260901', '預計進行全校學生身高、體重與視力測量檢查。')">📅 加入行事曆</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><i>預計</i><br><strong>09 / 17</strong> (四)</td>
-                                    <td>
-                                        <strong>115新學年志工期初聚會</strong>
-                                        <small>💬 待與校長及主任確認最終日期後，將於開學後正式公告。誠摯邀請全體夥伴登記參加！</small>
-                                    </td>
-                                    <td>
-                                        <span class="status-badge bg-blue">🤝 歡迎登記</span><br>
-                                        <button class="ics-btn" onclick="downloadICS('協進國小：115新學年志工期初聚會', '20260917', '待與校長及主任確認最終日期後，將於開學後正式公告。誠摯邀請全體夥伴登記參加！')">📅 加入行事曆</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
             </div>
             
@@ -1032,7 +1213,6 @@
                         <p style="color: #555; margin: 0; font-size: 13px;">若有臨時請假、排班詢問或緊急事項，歡迎直接點擊按鈕加 Line 聯繫團長。</p>
                     </div>
                     <div>
-                        <!-- 請將下面的 https://line.me/ti/p/您的Line連結 替換為實際的Line連結或ID -->
                         <a href="https://line.me/ti/p/wVZr_KNjeP" target="_blank" class="hero-btn" style="background-color: #06C755; padding: 8px 20px; font-size: 13px;">加 Line 與團長聯繫 ↗</a>
                     </div>
                 </div>
