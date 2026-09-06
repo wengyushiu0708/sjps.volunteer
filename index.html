@@ -149,12 +149,18 @@
             scroll-behavior: smooth;
         }
         body {
+            /* 使用自訂的圖片作為滑鼠游標，16 16 是點擊的熱點座標，後面加上 pointer 作為備用選項 */
+            cursor: url('hand-star-cursor.png') 16 16, pointer;
             font-family: 'Helvetica Neue', Arial, 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #F9F9F9;
             color: #333333;
             line-height: 1.8;
+            /* 讓按鈕和超連結在滑鼠移上去時，依然保持自訂的游標圖片 */
+            a, button, .nav-logo, .nav-links a, .cta-button {
+            cursor: url('hand-star-cursor.png') 16 16, pointer;
+        }
         }
 
         .marquee-banner {
@@ -733,10 +739,11 @@
 
     <!-- 網頁系統通知互動區塊 -->
     <div class="notification-box">
-        <h3 style="margin: 0 0 8px 0; color: #27AE60; font-size: 16px;">🔔 接收最新活動與排班系統通知</h3>
-        <p style="margin: 0 0 12px 0; font-size: 14px; color: #555;">點擊下方按鈕開啟通知權限，以便第一時間獲得校園志工重要消息！</p>
-        <button class="notify-btn" onclick="requestNotificationPermission()">開啟即時系統通知</button>
+        <h3 style="margin: 0 0 8px 0; color: #27AE60; font-size: 16px;">🔔 接收您來服務時間的通知</h3>
+        <p style="margin: 0 0 12px 0; font-size: 14px; color: #555;">點擊下方按鈕，教學如何加入行事曆！</p>
+        <button class="notify-btn" onclick="requestNotificationPermission()">開啟設定加入行事曆系統教學</button>
     </div>
+    
 
     <!-- 獨立寬版橫向展現之行事曆區塊（分左右兩欄分段） -->
     <section id="calendar-section" class="calendar-top-section">
@@ -990,6 +997,7 @@
 
         </div>
     </section>
+
 
     <!-- 關於我們主區塊（左右並排） -->
     <section id="about" class="about-section">
@@ -1334,7 +1342,7 @@
             Notification.requestPermission().then(function (permission) {
                 if (permission === "granted") {
                     new Notification("協進國小志工團隊", {
-                        body: "太棒了！您已成功開啟通知，記得依照您需要來服務的時間，加入您手幾的行事曆，開啟通知後，就能接收到提醒通知！",
+                        body: "太棒了！您已成功下載App，記得依照您需要來服務的時間，點選『📅加入』紫色方塊，加入您手機的行事曆，開啟通知後，就能接收到提醒通知！",
                         icon: "favicon.png"
                     });
                 } else if (permission === "denied") {
