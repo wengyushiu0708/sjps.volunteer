@@ -108,10 +108,10 @@
         .video-responsive-wrapper {
             position: relative;
             width: 100%;
-            max-width: 850px;
+            max-width: 1050px; /* 已將影片最大寬度放大，外框不變 */
             margin: 0 auto;
             height: 0;
-            padding-bottom: 47.8%;
+            padding-bottom: 68%; /* 調整為標準且較大的 16:9 滿版比例 */
             background-color: #000000;
             border-radius: 12px;
             overflow: hidden;
@@ -149,7 +149,6 @@
             scroll-behavior: smooth;
         }
         body {
-            /* 使用自訂的圖片作為滑鼠游標，16 16 是點擊的熱點座標，後面加上 pointer 作為備用選項 */
             cursor: url('hand-star-cursor.png') 16 16, pointer;
             font-family: 'Helvetica Neue', Arial, 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
             margin: 0;
@@ -157,7 +156,6 @@
             background-color: #F9F9F9;
             color: #333333;
             line-height: 1.8;
-
         }
 
         .marquee-banner {
@@ -299,7 +297,6 @@
             scroll-margin-top: 100px;
         }
         
-        /* 左右並排佈局容器 */
         .about-flex-container {
             display: flex;
             gap: 40px;
@@ -358,7 +355,6 @@
         .capsule-2 { background-color: #27AE60; }
         .capsule-3 { background-color: #F2994A; }
 
-        /* --- 行事曆最上方寬版橫向展現與左右兩欄分段樣式 --- */
         .calendar-top-section {
             max-width: 1200px;
             margin: 40px auto 20px auto;
@@ -380,14 +376,13 @@
             align-items: center;
         }
         
-        /* 左右兩欄分段容器 */
         .calendar-split-container {
             display: flex;
             gap: 25px;
         }
         .calendar-col {
             flex: 1;
-            min-width: 0; /* 防止表格撐開跑版 */
+            min-width: 0;
         }
 
         .table-responsive {
@@ -1177,7 +1172,7 @@
 
                 <div class="group-card card-highlight">
                     <h3>09. 學校彈性活動支援 (機動服務志工組)<span class="thanks-tag">特別感謝</span></h3>
-                    <p>專門在校運會前夕挺身而出的強力後援部隊！負責協助各項田徑、球類會前賽的事事務工作，包含賽事裁判計時協助、選手動線檢錄引導、計分板即時登錄與現場秩序維護，是保障賽事順暢進行的關鍵亮點夥伴。<br>
+                    <p>專門在校運會前夕挺身而上的強力後援部隊！負責協助各項田徑、球類會前賽的事事務工作，包含賽事裁判計時協助、選手動線檢錄引導、計分板即時登錄與現場秩序維護，是保障賽事順暢進行的關鍵亮點夥伴。<br>
                     <strong>職責：</strong>運動會賽事裁判、點名、整隊、拍照及秩序維護。<br>
                     <strong>收穫：</strong>學習大型活動統籌規劃、增進團隊協作與危機處理能力。</p>
                     <div class="card-meta-info">
