@@ -963,7 +963,8 @@
 
     <section class="hero-section">
         <div class="slider-container">
-            <img src="volunteer1.jpg" alt="協進志工活動照片1" class="slide active">
+            <img src="volunteer00.jpg" alt="協進志工活動照片4" class="slide active">
+            <img src="volunteer1.jpg" alt="協進志工活動照片1" class="slide ">
             <img src="volunteer2.jpg" alt="協進志工活動照片2" class="slide">
             <img src="volunteer3.jpg" alt="協進志工活動照片3" class="slide">
             <img src="volunteer4.jpg" alt="協進志工活動照片4" class="slide">
@@ -985,6 +986,7 @@
             <img src="volunteer20.jpg" alt="協進志工活動照片4" class="slide">
             <img src="volunteer21.jpg" alt="協進志工活動照片4" class="slide">
             <img src="volunteer22.jpg" alt="協進志工活動照片4" class="slide">
+            
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -1462,20 +1464,20 @@
                     </div>
                 </div>
 
-                <!-- 相簿 3：志工旅遊 -->
-                <div class="album-card" onclick="openAlbum('travel')">
-                    <img src="volunteer1.jpg" class="album-cover" alt="志工旅遊">
-                    <div class="album-info">
-                        <div class="album-title">🚌 志工旅遊</div>
-                        <div class="album-count">尚無照片</div>
-                    </div>
-                </div>
-
-                <!-- 相簿 4：志工聚會 -->
+                <!-- 相簿 3：志工聚會 -->
                 <div class="album-card" onclick="openAlbum('gathering')">
                     <img src="volunteer1.jpg" class="album-cover" alt="志工聚會">
                     <div class="album-info">
                         <div class="album-title">☕ 志工聚會</div>
+                        <div class="album-count">尚無照片</div>
+                    </div>
+                </div>
+                
+                 <!-- 相簿 4：志工旅遊 -->
+                <div class="album-card" onclick="openAlbum('travel')">
+                    <img src="volunteer1.jpg" class="album-cover" alt="志工旅遊">
+                    <div class="album-info">
+                        <div class="album-title">🚌 志工旅遊</div>
                         <div class="album-count">尚無照片</div>
                     </div>
                 </div>
@@ -1957,6 +1959,21 @@
 
     <!-- 相簿控制 JS 腳本 -->
     <script>
+
+        // 圖片輪播器
+        (function() {
+            var slides = document.querySelectorAll('.slider-container .slide');
+            var currentIndex = 0;
+            var slideInterval = 4000;
+
+            function nextSlide() {
+                slides[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % slides.length;
+                slides[currentIndex].classList.add('active');
+            }
+
+            setInterval(nextSlide, slideInterval);
+        })();
         // 相簿名稱對照表
         const albumTitles = {
             'sports': '🏃 運動會精彩花絮',
